@@ -3,5 +3,6 @@ import cv2 as cv
 
 def displayImage(image):
     #Returns the processed image
-    cv.imshow("circleWithDetection", image)
+    #https://www.geeksforgeeks.org/python-play-a-video-using-opencv/ lines 20 - 23
+    cv.imshow("Detected Lines", image)
     cv.waitKey(1)

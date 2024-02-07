@@ -14,14 +14,14 @@ def readImage():
     video = cv.VideoCapture(0)
 
     #Prevents program from crashing error
-    try:
-        #While the video is playing, read the frame, process it & display it
-        while videoIsPlaying == True:
-            videoIsPlaying, frame = video.read()
-            ImageProcessing.processImage(frame)
-            ImageDisplaying.displayImage(frame)
-        cv.destroyAllWindows()
+# try:
+    #While the video is playing, read the frame, process it & display it
+    while videoIsPlaying == True:
+        videoIsPlaying, frame = video.read()
+        # ImageProcessing.processImage(frame)
+        ImageDisplaying.displayImage(frame)
+    cv.destroyAllWindows()
 
-    #Prints message when video is done
-    except: print("The video is done.")
-    finally: exit()
+#Prints message when video is done
+# except: print("The video is done.")
+# finally: exit()

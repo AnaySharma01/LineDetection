@@ -5,13 +5,13 @@ import cv2 as cv
 import ImageProcessing
 import ImageDisplaying
 
-def readImage(image):
+def readImage():
     #Variable needed for displaying the video
     #https://geeksforgeeks.org/python-play-a-video-using-opencv/ lines 15 - 20
     videoIsPlaying = True
 
     #Starts the video capture
-    video = cv.VideoCapture(image)
+    video = cv.VideoCapture(0)
 
     #Prevents program from crashing error
     try:

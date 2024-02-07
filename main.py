@@ -4,8 +4,15 @@ from tkinter import *
 from PIL import Image, ImageTk
 import numpy as np
 
-#Image reading function
+#Imports necessary function
+import ImageDisplaying
+import ImageReading
 
-#Image processing function
+#Loads the image
+file = cv.VideoCapture(0)
+ImageReading.readImage()
 
-#Image displaying function
+#Applies image detection
+
+#Displays image with hough lines
+ImageDisplaying.displayImage()

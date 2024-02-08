@@ -6,7 +6,7 @@ def processImage(image):
     #Creates mask
     #https://pyimagesearch.com/2021/01/19/image-masking-with-opencv/ Lines 20-26
     roi = np.zeros(image.shape[:2], dtype="uint8")
-    cv.rectangle(roi, (50, 90), (300, 600), 255, -1)
+    cv.rectangle(roi, (500, 500), (1000, 1000), 235, -1)
     mask = cv.bitwise_and(image, image, mask=roi)
 
     #Applies gaussian and median blur
@@ -18,7 +18,7 @@ def processImage(image):
 
     #Creates hough lines around image
     #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 42
-    lines = cv.HoughLinesP(canny_image, 25, np.pi / 180, threshold=120, minLineLength = 0, maxLineGap=0)
+    lines = cv.HoughLinesP(canny_image, 25, np.pi / 180, threshold = 0, minLineLength = 0, maxLineGap=0)
 
     #Displays hough lines
     #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 14-19

@@ -9,9 +9,14 @@ def processImage(image):
     cv.rectangle(roi, (500, 500), (1000, 1000), 235, -1)
     mask = cv.bitwise_and(image, image, mask=roi)
 
+    #Uses kernel to make the lines thicker
+    #https://docs.opencv.org/4.x/d9/d61/tutorial_py_morphological_ops.html Lines 6-7
+    kernel_arr = np.ones((10, 10), np.uint8)
+    kernel = cv.erode(mask, kernel_arr, iterations=1)
+
     #Applies gaussian and median blur
     #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Lines 35-38
-    gray = cv.cvtColor(mask, cv.COLOR_BGR2GRAY)
+    gray = cv.cvtColor(kernel, cv.COLOR_BGR2GRAY)
     gray_scale = cv.GaussianBlur(gray, (15, 15), 0)
     median_blur = cv.medianBlur(gray_scale, 5)
     canny_image = cv.Canny(median_blur, 120, 120)

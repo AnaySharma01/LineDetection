@@ -1,6 +1,7 @@
 #Imports necessary packages
 import cv2 as cv
 import numpy as np
+import math
 
 def processImage(image):
     #Creates a mask
@@ -11,8 +12,8 @@ def processImage(image):
 
     #Uses kernel to make the lines thicker
     #https://docs.opencv.org/4.x/d9/d61/tutorial_py_morphological_ops.html Lines 6-7
-    kernel_arr = np.ones((10, 10), np.uint8)
-    kernel = cv.erode(mask, kernel_arr, iterations=1)
+    kernel_arr = np.ones((5, 5), np.uint8)
+    kernel = cv.erode(mask, kernel_arr, iterations = 1)
 
     #Applies gaussian and median blur
     #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Lines 35-38
@@ -23,13 +24,13 @@ def processImage(image):
 
     #Creates hough lines around image
     #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 42
-    lines = cv.HoughLinesP(canny_image, 25, np.pi / 180, threshold = 0, minLineLength = 0, maxLineGap=0)
+    lines = cv.HoughLinesP(canny_image, 1, np.pi / 180, threshold = 0, minLineLength = 0, maxLineGap = 0)
 
     #Displays hough lines
     #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 14-19
     if lines is not None:
         for line in lines:
             x1, y1, x2, y2 = line[0]
-            cv.line(image, (x1, y1), (x2, y2), (0, 255, 0), 10)
+            line = cv.line(image, (x1, y1), (x2, y2), (0, 255, 0), 10)
+            
 
-        return line

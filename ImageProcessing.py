@@ -3,7 +3,7 @@ import cv2 as cv
 import numpy as np
 
 def processImage(image):
-    #Creates mask
+    #Creates a mask
     #https://pyimagesearch.com/2021/01/19/image-masking-with-opencv/ Lines 20-26
     roi = np.zeros(image.shape[:2], dtype="uint8")
     cv.rectangle(roi, (500, 500), (1000, 1000), 235, -1)
@@ -27,10 +27,9 @@ def processImage(image):
 
     #Displays hough lines
     #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 14-19
-    lines_list = []
     if lines is not None:
         for line in lines:
             x1, y1, x2, y2 = line[0]
             cv.line(image, (x1, y1), (x2, y2), (0, 255, 0), 10)
-            lines_list.append([(x1, y1), (x2, y2)])
+
         return line

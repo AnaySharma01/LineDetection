@@ -9,7 +9,7 @@ def processImage(image):
     cv.rectangle(roi, (500, 500), (900, 900), 255, -1)
     mask = cv.bitwise_and(image, image, mask=roi)
 
-    # Applies gaussian median blur, and canny edge detection
+    # Applies gaussian and median blur
     # https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Lines 35-38
     gray = cv.cvtColor(mask, cv.COLOR_BGR2GRAY)
     gray_scale = cv.GaussianBlur(gray, (15, 15), 0)
@@ -18,7 +18,7 @@ def processImage(image):
 
     # Creates hough lines around image
     # https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 42
-    lines = cv.HoughLinesP(canny_image, 1, np.pi / 180, threshold = 10, minLineLength = 10, maxLineGap = 5)
+    lines = cv.HoughLinesP(canny_image, 1, np.pi / 180, threshold = 10, minLineLength = 10, maxLineGap = 15)
 
     #Displays hough lines
     #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 14-19
@@ -29,5 +29,5 @@ def processImage(image):
             cv.line(image, (x1, y1), (x2, y2), (0, 255, 0), 10)
             if x2/x1 == y2/y1:
                 lines_list.append([(x1, y1), (x2, y2)])
-                print(lines_list[0])
+                print(lines_list)
 

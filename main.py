@@ -19,8 +19,9 @@ def DisplayLines():
         videoIsPlaying, frame = video.read()
         ImageProcessing.processImage(frame)
         ImageDisplaying.displayImage(frame)
-    #Destroys the program when exiting
+    # Destroys the program when exiting
     cv.destroyAllWindows()
-  
-#Runs the program
+
+
+# Runs the program
 DisplayLines()

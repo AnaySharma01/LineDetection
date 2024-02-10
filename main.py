@@ -3,6 +3,7 @@ import cv2 as cv
 
 #Imports necessary function
 import ImageDisplaying
+import ImageProcessing
 import ImageReading
 
 #Loads the image

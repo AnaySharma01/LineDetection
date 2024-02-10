@@ -1,17 +1,6 @@
-#Imports necessary packages
-import cv2 as cv
-
-#Imports necessary function
-import ImageDisplaying
-import ImageProcessing
+#Imports necessary functions
 import ImageReading
 
-#Loads the image
-file = cv.VideoCapture(0)
+#Loads the image, processes it and displays it
 ImageReading.readImage()
 
-#Applies image detection
-ImageProcessing.processImage()
-
-#Displays image with hough lines
-ImageDisplaying.displayImage()

@@ -6,7 +6,7 @@ def processImage(image):
     # Creates a mask
     # https://pyimagesearch.com/2021/01/19/image-masking-with-opencv/ Lines 20-26
     roi = np.zeros(image.shape[:2], dtype="uint8")
-    cv.rectangle(roi, (500, 500), (700, 700), 255, -1)
+    cv.rectangle(roi, (500, 500), (850, 850), 255, -1)
     mask = cv.bitwise_and(image, image, mask=roi)
 
     # Applies gaussian and median blur

@@ -9,7 +9,7 @@ def processImage(image):
     cv.rectangle(roi, (200, 200), (600, 600), 255, -1)
     mask = cv.bitwise_and(image, image, mask=roi)
 
-    # Applies gaussian and median blur
+    # Applies gaussian median blur, and canny edge detection
     # https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Lines 35-38
     gray = cv.cvtColor(mask, cv.COLOR_BGR2GRAY)
     gray_scale = cv.GaussianBlur(gray, (15, 15), 0)

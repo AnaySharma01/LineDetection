@@ -10,6 +10,7 @@ file = cv.VideoCapture(0)
 ImageReading.readImage()
 
 #Applies image detection
+ImageProcessing.processImage()
 
 #Displays image with hough lines
 ImageDisplaying.displayImage()

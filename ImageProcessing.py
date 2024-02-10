@@ -2,8 +2,6 @@
 import cv2 as cv
 import numpy as np
 import matplotlib as lib
-from matplotlib.pyplot import axvline
-
 
 def processImage(image):
     # Applies gaussian blur, median blur, and canny on the image
@@ -51,5 +49,3 @@ def processImage(image):
             cv.line(image, (190, 218), (335, 290), (0, 0, 255), 10)
         elif slope < 1:
             cv.line(image, (250, 218), (200, 372), (0, 0, 255), 10)
-        elif -1<slope<1:
-            cv.line(image, (250, 218), (250, 372), (0, 0, 255), 10)

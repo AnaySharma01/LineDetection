@@ -2,6 +2,7 @@
 import cv2 as cv
 import numpy as np
 
+
 def processImage(image):
     # Applies gaussian blur, median blur, and canny on the image
     # https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Lines 35-38
@@ -15,35 +16,35 @@ def processImage(image):
     roi = np.zeros(image.shape[:2], dtype="uint8")
     cv.rectangle(roi, (500, 500), (850, 850), 1, -1)
     mask = cv.bitwise_and(canny_image, canny_image, mask=roi)
-    #Displays the mask
+    # Displays the mask
     cv.rectangle(image, (500, 500), (850, 850), (255, 0, 0), 5)
 
     # Creates hough lines around image
     # https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 42
-    lines = cv.HoughLinesP(mask, 1, np.pi / 180, threshold = 10, minLineLength = 10, maxLineGap = 15)
+    lines = cv.HoughLinesP(mask, 1, np.pi / 180, threshold=10, minLineLength=10, maxLineGap=15)
 
-    #Displays hough lines
-    #https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 14-19
+    # Displays hough lines
+    # https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 14-19
 
-    #Prevents program from crashing if no lines detected
+    # Prevents program from crashing if no lines detected
     if lines is not None:
         slope_arr = []
         lines_list = []
         for line in lines:
-            #Creates lines
+            # Creates lines
             x1, y1, x2, y2 = line[0]
             lines_list.append(line[0])
-            #Displays parallel lines
+            # Displays parallel lines
             cv.line(image, (x1, y1), (x2, y2), (0, 255, 0), 10)
-            #https://www.geeksforgeeks.org/program-find-slope-line/ Line 4
-            #Calculates slope
+            # https://www.geeksforgeeks.org/program-find-slope-line/ Line 4
+            # Calculates slope
             slope = 0
-            if x2-x1 != 0:
+            if x2 - x1 != 0:
                 slope = (y2 - y1) / (x2 - x1)
             slope_arr.append(slope)
-        #https://www.geeksforgeeks.org/python-nested-loops/ Example 2 Lines 3 and 7
+        # https://www.geeksforgeeks.org/python-nested-loops/ Example 2 Lines 3 and 7
         for i in range(len(slope_arr)):
-                for j in range(len(slope_arr)):
-                    x1, y1, x2, y2 = lines_list[i]
-                    x3, y3, x4, y4 = lines_list[j]
-                    cv.line(image, ((x1+x3)//2, (y1+y3)//2), ((x2+x4)//2, (y2+y4)//2), (0, 255, 0), 10)
+            for j in range(len(slope_arr)):
+                x1, y1, x2, y2 = lines_list[i]
+                x3, y3, x4, y4 = lines_list[j]
+                cv.line(image, ((x1 + x3) // 2, (y1 + y3) // 2), ((x2 + x4) // 2, (y2 + y4) // 2), (0, 255, 0), 10)

@@ -5,7 +5,7 @@ import cv2 as cv
 import ImageProcessing
 import ImageDisplaying
 
-
+#Function for displaying the video with the parallel and centerlines
 def DisplayLines():
     # https://geeksforgeeks.org/python-play-a-video-using-opencv/ lines 15 - 20
     # Variable needed for displaying the video

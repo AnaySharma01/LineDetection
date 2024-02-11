@@ -18,13 +18,11 @@ def processImage(image):
     # Displays the mask
     cv.rectangle(image, (500, 500), (850, 850), (255, 0, 0), 5)
 
-    # Creates hough lines around image
+    # Creates the hough lines used for the line detection
     # https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 42
     lines = cv.HoughLinesP(mask, 1, np.pi / 180, threshold=10, minLineLength=10, maxLineGap=15)
-
-    # Displays hough lines
+    
     # https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_vid.py Line 14-19
-
     # Prevents program from crashing if no lines detected
     if lines is not None:
         #Variables needed to find the centerline 
@@ -51,5 +49,5 @@ def processImage(image):
             for j in range(len(slope_arr)):
                 x1, y1, x2, y2 = lines_list[i]
                 x3, y3, x4, y4 = lines_list[j]
-                #Displays the centerline
+                #Calculates and displays the centerline
                 cv.line(image, ((x1 + x3)//2, (y1 + y3)//2), ((x2 + x4)//2, (y2 + y4)//2), (0, 255, 0), 10)

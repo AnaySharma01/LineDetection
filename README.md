@@ -5,3 +5,5 @@ https://github.com/adityagandhamal/road-lane-detection/blob/master/detection_on_
 https://pyimagesearch.com/2021/01/19/image-masking-with-opencv/
 
 https://www.geeksforgeeks.org/program-find-slope-line/
+
+https://www.geeksforgeeks.org/python-nested-loops/
